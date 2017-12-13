@@ -1,0 +1,30 @@
+Source: gosa-plugin-netgroups
+Section: web
+Priority: optional
+Maintainer: Debian Edu Packaging Team <debian-edu-pkg-team@lists.alioth.debian.org>
+Uploaders:
+ Mike Gabriel <sunweaver@debian.org>,
+Build-Depends:
+ debhelper (>= 9),
+ cdbs,
+ subversion,
+ svn2cl | subversion-tools (<< 1.7.5),
+Standards-Version: 3.9.8
+Homepage: https://oss.gonicus.de/labs/gosa-contrib/browser/netgroups
+Vcs-Git: https://anonscm.debian.org/cgit/debian-edu/pkg-team/gosa-plugin-netgroups.git
+Vcs-Browser: https://anonscm.debian.org/cgit/debian-edu/pkg-team/gosa-plugin-netgroups.git
+
+Package: gosa-plugin-netgroups
+Architecture: all
+Depends: 
+ ${misc:Depends},
+ gosa (>= 2.7),
+Breaks:
+ debian-edu-config-gosa-netgroups,
+Replaces:
+ debian-edu-config-gosa-netgroups,
+Description: NIS netgroups plugin for GOsa²
+ Manage LDAP-based NIS netgroups with GOsa².
+ .
+ GOsa² is a combination of system-administrator and end-user web
+ interface, designed to handle LDAP based setups.

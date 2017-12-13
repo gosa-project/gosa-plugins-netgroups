@@ -1,0 +1,53 @@
+gosa-plugin-netgroups (0.1~svn652-6) unstable; urgency=medium
+
+  * debian/patches:
+    + Now really fix 1003_php7-compliance.patch. Thanks to Wolfgang Schweer!!!
+      (Closes: #850956).
+
+ -- Mike Gabriel <sunweaver@debian.org>  Sun, 22 Jan 2017 21:20:11 +0100
+
+gosa-plugin-netgroups (0.1~svn652-5) unstable; urgency=medium
+
+  * debian/changelog: Fix typo in previous log stanza.
+  * debian/patches:
+    + Update 1003_php7-compliance.patch. Use PHP7 constructor method name.
+      (Closes: #850956). Thanks to Wolfgang Schweer for investigating
+      this.
+
+ -- Mike Gabriel <sunweaver@debian.org>  Fri, 20 Jan 2017 14:21:50 +0100
+
+gosa-plugin-netgroups (0.1~svn652-4) unstable; urgency=medium
+
+  * debian/control:
+    + Bump Standards-Version: to 3.9.8. No changes needed.
+    + Use secure URLs for Vcs-*: fields.
+  * debian/patches:
+    + Add 1003_php7-compliance.patch. Make gosa-plugin-netgroups PHP7
+      compliant. (Closes: #839860).
+
+ -- Mike Gabriel <sunweaver@debian.org>  Sun, 20 Nov 2016 14:27:29 +0100
+
+gosa-plugin-netgroups (0.1~svn652-3) unstable; urgency=medium
+
+  * debian/patches:
+    + Add 1001_fix-renaming-hosts.patch. Correctly update NIS netgroup
+      memberships when a system gets renamed. (Closes: #741434).
+    + Add 1002_fix-netgroup-remove-from-hosts.patch. Correctly remove
+      systems from NIS netgroup via NIS netgroup tab of system objects.
+      (Closes: #802559).
+  * debian/control:
+    + Bump Standards: to 3.9.6. No changes needed.
+
+ -- Mike Gabriel <sunweaver@debian.org>  Wed, 21 Oct 2015 06:22:56 +0200
+
+gosa-plugin-netgroups (0.1~svn652-2) unstable; urgency=medium
+
+  * Fix installation of additionally provided Romanian translation file.
+
+ -- Mike Gabriel <sunweaver@debian.org>  Mon, 15 Sep 2014 10:58:35 +0200
+
+gosa-plugin-netgroups (0.1~svn652-1) unstable; urgency=medium
+
+  * Initial release. (Closes: #761630).
+
+ -- Mike Gabriel <sunweaver@debian.org>  Mon, 15 Sep 2014 10:49:53 +0200
