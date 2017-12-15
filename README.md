@@ -2,7 +2,7 @@
 
 This plugin for GOsa² provides you with a UI to manage LDAP based NIS netgroups.
 
-## Install Instructions.
+## Installation Instructions
 
 *Openldap schemas needed:* nis.schema or rfc2307bis.schema
 
