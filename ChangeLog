@@ -1,0 +1,34 @@
+2018-08-17 12:20:39 +0200 Mike Gabriel (5a3c371)
+
+	* release 0.2 (HEAD -> master, tag: 0.2)
+
+2017-12-15 09:40:32 +0100 Mike Gabriel (282f252)
+
+	* Drop Debian's Changelog file copied into the upstream repo. Does
+          not make much sense here.
+
+2017-12-15 09:09:57 +0100 Mike Gabriel (52ccec0)
+
+	* README.md: minor cosmetics
+
+2017-12-15 09:07:20 +0100 Mike Gabriel (3fe4dde)
+
+	* README.md: Convert to markdown, rephrase here and there, add
+          credits to the original author.
+
+2017-12-15 09:00:39 +0100 Mike Gabriel (5d854fe)
+
+	* Drop Debian-specifif files (control, copyright.in, copyright).
+
+2017-12-13 11:44:47 +0100 bzapiec (d74fcfd)
+
+	* remove rules since it still uses the old repository
+
+2017-12-13 11:43:07 +0100 bzapiec (e783af6)
+
+	* add missing files
+
+2017-11-29 17:04:16 +0100 bzapiec (2829481)
+
+	* initial plugin commit
+
