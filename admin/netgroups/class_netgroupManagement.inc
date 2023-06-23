@@ -27,6 +27,7 @@ class netgroupManagement extends management {
     var $plHeadline = "NIS Netgroups";
     var $plDescription = "NIS Netgroups management";
     var $plIcon = "plugins/netgroups/images/plugin.png";
+    var $matIcon= "connect_without_contact";
     // Tab definition
     protected $tabClass = "netgrouptabs";
     protected $tabType = "NETGROUPTABS";
