@@ -338,7 +338,7 @@ class netgroup extends plugin {
 			$fqdn = "{$host}.{$domain}";
 			if(!$attrs){
 				$ldap->search("(&(|(objectClass=gotoTerminal)(objectClass=gotoWorkstation)(objectClass=goServer)".
-					"(objectClass=GOhard)(objectClass=ieee802Device))(|(cn=".normalizeldap($host).")(cn=".normalizeldap($fqdn).")))");
+					"(objectClass=GOhard)(objectClass=ieee802Device))(|(cn=".LDAP::escapeValue($host).")(cn=".LDAP::escapeValue($fqdn).")))");
 				if($ldap->count()){
 					$attrs = $ldap->fetch();
 				}
@@ -347,7 +347,7 @@ class netgroup extends plugin {
 		}else if($user){
 			$attributes = array("dn", "cn", "uid", "sn", "givenName", "objectClass");
 			if(!$attrs){
-				$ldap->search("(&(objectClass=posixAccount)(uid=".normalizeldap($user)."))");
+				$ldap->search("(&(objectClass=posixAccount)(uid=".LDAP::escapeValue($user)."))");
 				if($ldap->count()){
 					$attrs = $ldap->fetch();
 				}
@@ -406,7 +406,7 @@ class netgroup extends plugin {
 		$ldap = $this->config->get_ldap_link();
 		$ldap->cd($this->config->current['BASE']);
 		$attributes = array("dn", "cn", "description", "objectClass");
-		$ldap->search("(&(objectClass=nisNetgroup)(cn=".normalizeldap($name)."))");
+		$ldap->search("(&(objectClass=nisNetgroup)(cn=".LDAP::escapeValue($name)."))");
 		$this->removeNisGroup($name);
 		$this->netgroups[$name] = $name;
 		if($ldap->count()){
@@ -434,7 +434,7 @@ class netgroup extends plugin {
         $ldap = $this->config->get_ldap_link();
         $ldap->rmdir($this->dn);
         if (!$ldap->success()) {
-            msg_dialog::display(_("LDAP error"), msgPool::ldaperror($ldap->get_error(), $this->dn, LDAP_DEL, get_class()));
+            msg_dialog::display(_("LDAP error"), msgPool::ldaperror($ldap->get_error(), $this->dn, LDAP_DEL, __CLASS__));
         }
 
         new log("remove", "netgroups/" . get_class($this), $this->dn, array_keys($this->attrs), $ldap->get_error());
@@ -561,7 +561,7 @@ class netgroup extends plugin {
 		// Check ldap result
         $ret = 0;
         if (!$ldap->success()) {
-            msg_dialog::display(_("LDAP error"), msgPool::ldaperror($ldap->get_error(), $this->dn, 0, get_class()));
+            msg_dialog::display(_("LDAP error"), msgPool::ldaperror($ldap->get_error(), $this->dn, 0, __CLASS__));
             $ret = 1;
         }
 

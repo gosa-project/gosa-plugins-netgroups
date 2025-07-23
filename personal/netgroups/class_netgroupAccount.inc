@@ -113,7 +113,7 @@ class netgroupAccount extends plugin {
 		if($attrs){
 			$ldap = $this->config->get_ldap_link();
 			$ldap->cd($this->config->current['BASE']);
-			$ldap->search("(&(objectClass=nisNetgroup)(cn=".normalizeldap($name)."))", array("cn", "description"));
+			$ldap->search("(&(objectClass=nisNetgroup)(cn=".LDAP::escapeValue($name)."))", array("cn", "description"));
 			if(!$ldap->count()){
 				return;
 			}
