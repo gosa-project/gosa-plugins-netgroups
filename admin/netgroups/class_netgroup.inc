@@ -158,13 +158,13 @@ class netgroup extends plugin {
         }
 
         // Close add-dialog
-        if (isset($_POST["add_triples_cancel"])) {
+        if (isset($_POST["add_triples_cancel"]) || isset($_POST['cancel-abort'])) {
             $this->userSelect = NULL;
             $this->dialog = FALSE;
         }
 
         // Add to netgroup
-        if (isset($_POST['add_triples_finish']) && $this->userSelect) {
+        if (isset($_POST['add_triples_finish']) || isset($_POST['ok-save']) && $this->userSelect) {
             $users = $this->userSelect->detectPostActions();
             if (isset($users['targets'])) {
                 $headpage = $this->userSelect->getHeadpage();
@@ -262,24 +262,52 @@ class netgroup extends plugin {
  	 * This is used to generated the list enties
  	 * */
 	function getImageForOc($objectClasses){
-		if(in_array("goServer", $objectClasses)){
-			return(image("plugins/systems/images/select_server.png"));
-		}
-		if(in_array("gotoWorkstation", $objectClasses)){
-			return(image("plugins/systems/images/select_workstation.png"));
-		}
-		if(in_array("gotoTerminal", $objectClasses)){
-			return(image("plugins/systems/images/select_terminal.png"));
-		}
-		if(in_array("ieee802Device", $objectClasses)){
-			return(image("plugins/systems/images/select_component.png"));
-		}
-		if(in_array("posixAccount", $objectClasses)){
-			return(image("plugins/users/images/select_user.png"));
-		}
-		if(in_array("nisNetgroup", $objectClasses)){
-			return(image("plugins/netgroups/images/select_netgroup.png"));
-		}
+        $theme = getThemeName();
+
+        switch ($theme) {
+            case 'classic':
+                if(in_array("goServer", $objectClasses)){
+                    return(image("plugins/systems/images/select_server.png"));
+                }
+                if(in_array("gotoWorkstation", $objectClasses)){
+                    return(image("plugins/systems/images/select_workstation.png"));
+                }
+                if(in_array("gotoTerminal", $objectClasses)){
+                    return(image("plugins/systems/images/select_terminal.png"));
+                }
+                if(in_array("ieee802Device", $objectClasses)){
+                    return(image("plugins/systems/images/select_component.png"));
+                }
+                if(in_array("posixAccount", $objectClasses)){
+                    return(image("plugins/users/images/select_user.png"));
+                }
+                if(in_array("nisNetgroup", $objectClasses)){
+                    return(image("plugins/netgroups/images/select_netgroup.png"));
+                }
+                break;
+            
+            default:
+                if(in_array("goServer", $objectClasses)){
+                    return(image("<i class='material-icons'>dns</i>"));
+                }
+                if(in_array("gotoWorkstation", $objectClasses)){
+                    return(image("<i class='material-icons'>computer</i>"));
+                }
+                if(in_array("gotoTerminal", $objectClasses)){
+                    return(image("<i class='material-icons'>monitor</i>"));
+                }
+                if(in_array("ieee802Device", $objectClasses)){
+                    return(image("<i class='material-icons'>inventory_2</i>"));
+                }
+                if(in_array("posixAccount", $objectClasses)){
+                    return(image("<i class='material-icons'>person</i>"));
+                }
+                if(in_array("nisNetgroup", $objectClasses)){
+                    return(image("<i class='material-icons'>connect_without_contact</i>"));
+                }
+                break;
+        }
+
 	}
 
 

@@ -133,6 +133,8 @@ class netgroupSystem extends plugin {
  	 * */
 	function addGroup($name, $attrs=NULL)
 	{
+		$theme = getThemeName();
+
 		if($attrs){
 			$ldap = $this->config->get_ldap_link();
 			$ldap->cd($this->config->current['BASE']);
@@ -147,7 +149,15 @@ class netgroupSystem extends plugin {
 			$desc = $attrs['description'][0];
 		}
 		$this->removeGroup($name);
-		$this->objectInfo[$name] = array(image("plugins/netgroups/images/select_netgroup.png"), $name, $desc);
+		switch ($theme) {
+			case 'classic':
+				$this->objectInfo[$name] = array(image("plugins/netgroups/images/select_netgroup.png"), $name, $desc);
+				break;
+			
+			default:
+				$this->objectInfo[$name] = array(image("<i class='material-icons input-icons'>connect_without_contact</i>"), $name, $desc);
+				break;
+		}
 		$this->netgroups[$name] = $name;
 	}
 
@@ -181,13 +191,13 @@ class netgroupSystem extends plugin {
 		}
 
 		/* Add objects finished? */
-		if (isset($_POST["add_memberNisnetgroups_cancel"])) {
+		if (isset($_POST["add_memberNisnetgroups_cancel"]) || isset($_POST['cancel-abort'])) {
 			$this->netgroupSelect = NULL;
 			$this->dialog = FALSE;
 		}
 
 		/* Add to netgroup */
-		if (isset($_POST['add_memberNisnetgroups_finish']) && $this->netgroupSelect) {
+		if (isset($_POST['add_memberNisnetgroups_finish']) || isset($_POST['ok-save']) && $this->netgroupSelect) {
 
 			/* Get all the dn from netgroupSelect */
 			$users = $this->netgroupSelect->detectPostActions();

@@ -72,7 +72,6 @@
 
 <!-- Place cursor -->
 <script language="JavaScript" type="text/javascript">
-    <!-- // First input field on page
+    // First input field on page
     focus_field('cn');
-    -->
 </script>
